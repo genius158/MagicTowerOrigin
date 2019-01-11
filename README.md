@@ -7,4 +7,4 @@ dart 还不是很熟，很多写法还不是很到位~~
 
 ### 开发过程有些小坑，整体回掉通知使用的rxdart，减少整体绘制，单刷各个小模块，ios android 通用分享、文件浏览。
 
-# DMOE(https://github.com/genius158/MagicTowerOrigin/blob/master/android/app-release.apk)
+## DMOE(https://github.com/genius158/MagicTowerOrigin/blob/master/android/app-release.apk)
