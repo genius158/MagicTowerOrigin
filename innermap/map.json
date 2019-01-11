@@ -1,0 +1,83 @@
+{
+  "sx":13,
+  "sy":13,
+  "curLevel":1,
+  "prop":[],
+  "hero":{
+    "name": "hero",
+    "type": "hero",
+    "life": 1000,
+    "attack": 0,
+    "defend": 0,
+    "money": 0,
+    "experience": 0,
+    "yKey": 0,
+    "bKey": 0,
+    "rKey": 0,
+
+    "equipment":
+    [
+      {"type": "blade1"},
+      { "type": "shield1"}
+    ],
+    "attackWeapon": {"type": "blade1"},
+    "defendWeapon": { "type": "shield1"}
+  },
+  "levels":
+    [
+      {
+        "roles":[
+          {"type":"slime1"}, { }, { }, {"type":"bat1"}, { }, { }, { }, { }, { }, { }, { }, { }, { },
+          { }, { }, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { },
+          { }, { }, { }, { }, { }, {"type":"yDoor"}, { }, { }, { }, { }, {"type":"lowLife"}, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, {"type":"nFloor"}, {"type":"wall1"}, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, {"type":"bat2"}, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, {"type":"rDoor"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"magic1"}, {"type":"wall1"}, { },
+          {"type":"yKey"}, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
+          {"type":"blade4"}, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, { }, { }, { }, { }, {"type":"rKey"}, { }, { }, { }, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
+          { }, { }, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { },
+          { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"att"}
+        ],
+        "pHero":{"px":7,"py":4}
+      },
+      {
+        "roles":[
+          {"type":"slime1"}, { }, { }, {"type":"bat1"}, { }, { }, { }, { }, { }, { }, { }, { }, { },
+          { }, { }, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { },
+          { }, { }, { }, { }, { }, {"type":"yDoor"}, { }, { }, { }, { }, {"type":"lowLife"}, {"type":"wall1"}, { },
+          {"type":"propBook"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, {}, {"type":"wall1"}, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, {"type":"bat2"}, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, {"type":"rDoor"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"magic1"}, {"type":"wall1"}, { },
+          {"type":"yKey"}, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
+          {"type":"blade3"}, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, { }, { }, { }, { }, {"type":"rKey"}, { }, { }, { }, { }, {"type":"wall1"}, { },
+          { }, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
+          { }, { }, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { },
+          {"type":"pFloor"}, { }, { }, {"type":"def"}, { }, { }, { }, {"type":"att"}, { }, { }, { }, { }, {"type":"nFloor"}
+        ],
+        "pHero":{"px":2,"py":0}
+      },
+      {
+        "roles":[
+          {"type":"pFloor"}, { }, { }, {"type":"blade1"}, {"type":"blade2"}, {"type":"blade3"}, {"type":"blade4"}, {"type":"shield1"}, {"type":"shield2"}, {"type":"shield3"}, {"type":"shield4"}, { }, { },
+          {"type":"slime1"}, {"type":"slime2"}, {"type":"slime3"}, {"type":"slime4"}, {"type":"bat1"}, {"type":"bat2"}, {"type":"bat3"}, { }, { }, { }, { }, { }, { },
+          {"type":"magic1"}, {"type":"magic2"}, {"type":"magic3"}, {"type":"magic4"}, {"type":"magic5"}, { }, { }, { }, { }, { }, {"type":"lowLife"}, { }, { },
+          { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { },
+          {"type":"skeleton1"}, {"type":"skeleton2"}, {"type":"skeleton3"}, { }, { }, {"type":"orca1"}, {"type":"orca2"}, { }, { }, { }, { }, { }, { },
+          { }, { }, {"type":"guard1"}, {"type":"guard2"}, {"type":"guard3"}, {"type":"guard4"}, {"type":"guard5"}, { }, { }, { }, { }, { }, { },
+          { }, { }, {"type":"rDoor"}, { }, { }, { }, { }, { }, { }, { }, {"type":"magic1"}, { }, { },
+          {"type":"hades1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { },
+          {"type":"hades2"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { },
+          { }, { }, { }, { }, { }, { }, {"type":"swords1"}, {"type":"swords2"}, {"type":"swords3"}, { }, { }, { }, { },
+          { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { },
+          {"type":"propSymmetry"}, {"type":"propFlyUp"}, {"type":"propFlyDown"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, { },
+          {"type":"stoneMonster"}, {"type":"shadowMonster"}, {"type":"boss1"}, {"type":"boss2"}, {"type":"boss3"}, { }, { }, { }, { }, { }, { }, { }, {}
+        ],
+        "pHero":{"px":2,"py":0}
+      }
+    ]
+}
