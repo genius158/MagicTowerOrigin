@@ -1,20 +1,8 @@
-# magic_tower_origin
 
-magic tower: origin
+# magic tower: origin(魔塔起源)
 
-## Getting Started
+这是一个简单的魔塔游戏实现（目前还不是一个完整的项目），游戏模块采用CustomPainter 绘制，可以自定义分享关卡。
 
-This project is a starting point for a Flutter application.
+# 开发过程有些小坑，整体回掉通知使用的rxdart，减少整体绘制，单刷各个小模块，ios android 通用分享、文件浏览。
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
-# MagicTowerOrigin
-# MagicTowerOrigin
-# MagicTowerOrigin
-# MagicTowerOrigin
+# DMOE(https://github.com/genius158/MagicTowerOrigin/blob/master/android/app-release.apk)
