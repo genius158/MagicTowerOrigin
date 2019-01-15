@@ -21,8 +21,11 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 
+#  share_extend:
+#    path: ./plugin/ShareExtend
   share_extend:
-    path: ./plugin/ShareExtend
+    git:
+      url: git://github.com/genius158/ShareExtend.git
 
 
 dev_dependencies:
