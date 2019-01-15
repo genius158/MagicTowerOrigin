@@ -34,7 +34,7 @@ class Painter extends CustomPainter {
     if (imageNode == null || imageNode.image == null) {
       return;
     }
-    canvas.drawImageRect(imageNode.image, imageNode.getImgRect(),
+    canvas.drawImageRect(imageNode.image, imageNode.imgRect,
         Rect.fromLTRB(0, 0, size.width, size.height), gamePaint);
   }
 

@@ -11,7 +11,7 @@ class ImageNode extends NameImage {
 
   ImageNode(String imgPath, this.split, this.index) : super(imgPath, imgPath);
 
-  Rect getImgRect() {
+  Rect get imgRect {
     if (image == null) {
       return Rect.fromLTRB(0, 0, 1, 1);
     }

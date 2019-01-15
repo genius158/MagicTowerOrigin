@@ -19,7 +19,7 @@ class ImageRender {
     this.imageNodes = imageNodes;
   }
 
-  ImageNode getImageNode() {
+  ImageNode get imageNode {
     return imageNodes[imageIndex >= imageNodes.length ? 0 : imageIndex];
   }
 

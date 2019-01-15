@@ -24,11 +24,11 @@ class GamePainter extends CustomPainter {
       if (imgRender == null) {
         continue;
       }
-      ImageNode imageNode = imgRender.getImageNode();
+      ImageNode imageNode = imgRender.imageNode;
       if (imageNode.image == null) {
         continue;
       }
-      canvas.drawImageRect(imageNode.image, imageNode.getImgRect(),
+      canvas.drawImageRect(imageNode.image, imageNode.imgRect,
           imgRender.getDisplayRect(size), _gamePaint);
     }
   }
