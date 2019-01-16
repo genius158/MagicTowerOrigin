@@ -229,7 +229,7 @@ class GameHeroInfoView extends StatelessWidget {
   }
 }
 
-class _ImageAndData extends StatelessWidget with Comparable<_ImageAndData> {
+class _ImageAndData extends StatelessWidget implements Comparable<_ImageAndData> {
   WeaponRole _weaponRole;
   ValueChanged<WeaponRole> onTap;
   EdgeInsets padding;

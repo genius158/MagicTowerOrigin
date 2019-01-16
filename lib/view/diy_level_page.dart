@@ -31,7 +31,7 @@ class DiyLevelPage extends StatefulWidget {
   State<StatefulWidget> createState() => DiyLevelState();
 }
 
-class DiyLevelState extends State<DiyLevelPage> with DiyLevelLogic {
+class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
   _InnerRolesManger _rolesManager = new _InnerRolesManger();
   HeroManager _heroManager = new HeroManager();
   List<BaseCharacter> _wallCharacterss;

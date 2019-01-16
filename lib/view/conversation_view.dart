@@ -21,9 +21,11 @@ class _ConversationState extends State<Conversation> {
   Widget build(BuildContext context) {
     return InkResponse(
       child: Container(
+        decoration: BoxDecoration(
+            color: ColorMgr.cr666666(),
+            border: Border.all(color: ColorMgr.crB57147(), width: 4)),
         padding: EdgeInsets.all(10),
         width: double.infinity,
-        color: ColorMgr.crB57147(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

@@ -78,7 +78,7 @@ class GamePropInfoView extends StatelessWidget {
   }
 }
 
-class _ImageAndData extends StatelessWidget with Comparable<_ImageAndData> {
+class _ImageAndData extends StatelessWidget implements Comparable<_ImageAndData> {
   PropRole _propRole;
   ValueChanged<PropRole> onTap;
   EdgeInsets padding;

@@ -58,7 +58,7 @@ class MonsterBookDialog extends StatelessWidget {
   }
 }
 
-class _ListItem extends StatelessWidget with Comparable<_ListItem> {
+class _ListItem extends StatelessWidget implements Comparable<_ListItem> {
   final AbilityCharacter abilityCharacter;
   final HeroCharacter hero;
 

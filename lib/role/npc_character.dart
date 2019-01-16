@@ -4,7 +4,7 @@ import 'package:magic_tower_origin/role/base_character.dart';
 import 'package:magic_tower_origin/role/condition_trigger.dart';
 import 'package:magic_tower_origin/role/name_role.dart';
 
-class NPC extends BaseCharacter<BaseEntry> with ConditionTrigger {
+class NPC extends BaseCharacter<BaseEntry> implements ConditionTrigger {
   List<String> _message = [];
   bool _triggerThanDismiss = false;
 
