@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 class ImageText extends StatelessWidget {
   EdgeInsetsGeometry padding;
 
-  String text;
-  String img;
+  String _text;
+  String _img;
   double width;
   double height;
   Color color;
 
-  ImageText(this.img, this.text,
+  ImageText(this._img, this._text,
       {this.padding, this.width, this.height, this.color});
 
   @override
   Widget build(BuildContext context) {
     Text tv = new Text(
-      text,
+      _text,
       style: TextStyle(fontSize: 14, color: color ?? Colors.white),
     );
-    if (img == null) {
+    if (_img == null) {
       return Padding(padding: padding ?? EdgeInsets.all(0), child: tv);
     }
     return Padding(
@@ -26,7 +26,7 @@ class ImageText extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Image.asset(
-            img,
+            _img,
             width: width ?? 16,
             height: height ?? 16,
           ),

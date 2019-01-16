@@ -10,10 +10,13 @@ class RouterHelper {
       String negativeText,
       VoidCallback onNegative,
       String positiveText,
+      bool barrierDismissible,
       VoidCallback onPositive}) {
+    barrierDismissible = barrierDismissible ?? true;
     ContextHelper.withCxt(context, (_) {
       if (layout != null) {
         showDialog<Null>(
+            barrierDismissible: barrierDismissible,
             context: context,
             builder: (BuildContext context) {
               return new MyAlertDialog(
@@ -24,6 +27,7 @@ class RouterHelper {
         return;
       }
       showDialog<Null>(
+          barrierDismissible: barrierDismissible,
           context: context,
           builder: (BuildContext context) {
             return new MyAlertDialog(

@@ -53,7 +53,7 @@
           { }, {"type":"wall1"}, {"type":"bat2"}, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { }, {"type":"wall1"}, { },
           { }, {"type":"wall1"}, {"type":"rDoor"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"magic1"}, {"type":"wall1"}, { },
           {"type":"yKey"}, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
-          {"type":"blade3"}, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
+          {"type":"blade3"}, {"type":"wall1"}, { }, { }, { }, { }, { }, {"type":"npc2"}, {"type":"npc1"}, { }, { }, {"type":"wall1"}, { },
           { }, {"type":"wall1"}, { }, { }, { }, { }, {"type":"rKey"}, { }, { }, { }, { }, {"type":"wall1"}, { },
           { }, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
           { }, { }, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { },

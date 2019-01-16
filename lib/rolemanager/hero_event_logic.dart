@@ -6,14 +6,18 @@ import 'package:magic_tower_origin/map/map_info.dart';
 import 'package:magic_tower_origin/render/image_render.dart';
 import 'package:magic_tower_origin/role/ability_character.dart';
 import 'package:magic_tower_origin/role/base_character.dart';
+import 'package:magic_tower_origin/role/condition_trigger.dart';
 import 'package:magic_tower_origin/role/grow_weapon_role.dart';
 import 'package:magic_tower_origin/role/name_role.dart';
+import 'package:magic_tower_origin/role/npc_character.dart';
 import 'package:magic_tower_origin/role/prop_condition_role.dart';
 import 'package:magic_tower_origin/role/prop_role.dart';
 import 'package:magic_tower_origin/role/weapon_role.dart';
 import 'package:magic_tower_origin/rolemanager/hero_manager.dart';
 import 'package:magic_tower_origin/rolemanager/roles_manager.dart';
+import 'package:magic_tower_origin/utils/router_heper.dart';
 import 'package:magic_tower_origin/utils/toast.dart';
+import 'package:magic_tower_origin/view/conversation_view.dart';
 
 /// 英雄 移动事件管理
 class HeroEventLogic {
@@ -63,11 +67,21 @@ class HeroEventLogic {
     int fy = oy;
 
     bool isPassAble = true;
-    if (character is PropConditionRole &&
+    if (character is ConditionTrigger &&
         direct != null &&
         (px != ox || py != oy)) {
-      character.trigger();
-      GameProvider.ofGame(context).update(character);
+      if (character is PropConditionRole) {
+        // 获得道具更新底部道具显示
+        character.trigger();
+        GameProvider.ofGame(context).update(character);
+      } else if (character is NPC) {
+        isPassAble = false;
+        doNPCTrigger(context, character, () {
+          if (character.triggerThanDismiss) {
+            _imageRenders.remove(_rolesManager.remove(px, py).imageRender);
+          }
+        });
+      }
     } else if (character is PropRole) {
       _imageRenders.remove(_rolesManager.remove(px, py).imageRender);
       hero.addEquipment(character);
@@ -158,5 +172,14 @@ class HeroEventLogic {
         }
       }
     }
+  }
+
+  void doNPCTrigger(BuildContext context, NPC npc, VoidCallback onTrigger) {
+    RouterHelper.routeDialog(context,
+        barrierDismissible: false,
+        layout: Conversation(npc.message, () {
+          onTrigger();
+          npc.trigger();
+        }));
   }
 }

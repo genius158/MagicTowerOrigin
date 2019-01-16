@@ -13,9 +13,6 @@ class PropLevel extends PropConditionRole {
 
   @override
   void trigger() {
-    if (!needDell) {
-      return;
-    }
     print("trigger triggertrigger $offset ${MapInfo.curLevel}");
 
     lastLevel = MapInfo.curLevel;

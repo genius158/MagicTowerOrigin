@@ -9,6 +9,7 @@ import 'package:magic_tower_origin/role/ability_character.dart';
 import 'package:magic_tower_origin/role/base_character.dart';
 import 'package:magic_tower_origin/role/grow_weapon_role.dart';
 import 'package:magic_tower_origin/role/hero_character.dart';
+import 'package:magic_tower_origin/role/npc_character.dart';
 import 'package:magic_tower_origin/role/prop_level.dart';
 import 'package:magic_tower_origin/role/prop_role.dart';
 import 'package:magic_tower_origin/role/weapon_role.dart';
@@ -75,6 +76,8 @@ class ME {
       shadowMonster,
       boss1,
       boss3,
+      npc1,
+      npc2,
     ];
   }
 
@@ -202,6 +205,13 @@ class ME {
       character = getBoss2();
     } else if (type == boss3) {
       character = getBoss3();
+    }
+
+    /// ------------ npc ---------------
+    else if (type == npc1) {
+      character = getNPC1();
+    } else if (type == npc2) {
+      character = getNPC2();
     }
     return character;
   }
@@ -1111,5 +1121,36 @@ class ME {
                 .setExperience(343))
         .setName("冥灵魔王")
         .setType("boss3");
+  }
+
+  static const String npc1 = "npc1";
+
+  static getNPC1() {
+    return NPC(
+            ImageRender([
+              ImageNode("images/NPC01-01.png", [4, 4], 0),
+              ImageNode("images/NPC01-01.png", [4, 4], 1),
+              ImageNode("images/NPC01-01.png", [4, 4], 2),
+              ImageNode("images/NPC01-01.png", [4, 4], 3),
+            ]),
+            BaseEntry().setPassable(false))
+        .setName("npc1")
+        .setType("npc1");
+  }
+
+  static const String npc2 = "npc2";
+
+  static getNPC2() {
+    return NPC(
+            ImageRender([
+              ImageNode("images/NPC01-01.png", [4, 4], 4),
+              ImageNode("images/NPC01-01.png", [4, 4], 5),
+              ImageNode("images/NPC01-01.png", [4, 4], 6),
+              ImageNode("images/NPC01-01.png", [4, 4], 7),
+            ]),
+            BaseEntry().setPassable(false))
+        .setTriggerThanDismiss()
+        .setName("npc2")
+        .setType("npc2");
   }
 }

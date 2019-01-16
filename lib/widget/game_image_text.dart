@@ -4,23 +4,23 @@ import 'package:magic_tower_origin/widget/image_view.dart';
 
 class GameImageText extends StatelessWidget {
   EdgeInsetsGeometry padding;
-  String text;
+  String _text;
   double width;
   double height;
-  ImageNode imageNode;
   double fontSize;
+  ImageNode _imageNode;
 
-  GameImageText(this.imageNode, this.text,
+  GameImageText(this._imageNode, this._text,
       {this.padding, this.width, this.height, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
 //    print("GameImageTextGameImageTextGameImageText      ---------------------");
     Text tv = new Text(
-      text,
+      _text,
       style: TextStyle(fontSize: fontSize ?? 14, color: Colors.white),
     );
-    if (imageNode == null) {
+    if (_imageNode == null) {
       return Padding(padding: padding ?? EdgeInsets.all(0), child: tv);
     }
     return Padding(
@@ -28,7 +28,7 @@ class GameImageText extends StatelessWidget {
       child: Row(
         children: <Widget>[
           ImageView(
-            imageNode,
+            _imageNode,
             width: width,
             height: height,
           ),
