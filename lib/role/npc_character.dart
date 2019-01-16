@@ -5,12 +5,17 @@ import 'package:magic_tower_origin/role/condition_trigger.dart';
 import 'package:magic_tower_origin/role/name_role.dart';
 
 class NPC extends BaseCharacter<BaseEntry> with ConditionTrigger {
-  List<String> _message = ["hello"];
+  List<String> _message = [];
   bool _triggerThanDismiss = false;
 
   NPC(ImageRender imageRender, BaseEntry<Name> abilityEntry)
       : super(imageRender, abilityEntry) {
     abilityEntry.passable = false;
+  }
+
+  putMessage(String message) {
+    _message.add(message);
+    return this;
   }
 
   setTriggerThanDismiss() {

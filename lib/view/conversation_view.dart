@@ -4,8 +4,9 @@ import 'package:magic_tower_origin/config/colors.dart';
 class Conversation extends StatefulWidget {
   List<String> _message = List();
   VoidCallback _onTrigger;
+  String _name;
 
-  Conversation(this._message, this._onTrigger);
+  Conversation(this._name, this._message, this._onTrigger);
 
   @override
   State<StatefulWidget> createState() {
@@ -20,8 +21,36 @@ class _ConversationState extends State<Conversation> {
   Widget build(BuildContext context) {
     return InkResponse(
       child: Container(
+        padding: EdgeInsets.all(10),
+        width: double.infinity,
         color: ColorMgr.crB57147(),
-        child: Text(widget._message[index]),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(5),
+            ),
+            Container(
+              width: double.infinity,
+              child: Text(
+                widget._name + ": " + widget._message[index],
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(5),
+            ),
+            Container(
+              width: double.infinity,
+              alignment: Alignment.centerRight,
+              child: Text(
+                ">>",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
       ),
       onTap: () {
         nextMessage(context);

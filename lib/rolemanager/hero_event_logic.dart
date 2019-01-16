@@ -177,7 +177,7 @@ class HeroEventLogic {
   void doNPCTrigger(BuildContext context, NPC npc, VoidCallback onTrigger) {
     RouterHelper.routeDialog(context,
         barrierDismissible: false,
-        layout: Conversation(npc.message, () {
+        layout: Conversation(npc.name,npc.message, () {
           onTrigger();
           npc.trigger();
         }));
