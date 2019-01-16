@@ -21,10 +21,13 @@ class RouterHelper {
             barrierDismissible: barrierDismissible,
             context: context,
             builder: (BuildContext context) {
-              return new MyAlertDialog(
-                contentPadding: EdgeInsets.all(0),
-                content: layout,
-              );
+              return Theme(
+                  data: Theme.of(context)
+                      .copyWith(dialogBackgroundColor: Colors.transparent),
+                  child: new MyAlertDialog(
+                    contentPadding: EdgeInsets.all(0),
+                    content: layout,
+                  ));
             });
         return;
       }
@@ -32,56 +35,59 @@ class RouterHelper {
           barrierDismissible: barrierDismissible,
           context: context,
           builder: (BuildContext context) {
-            return new MyAlertDialog(
-              contentPadding: EdgeInsets.all(0),
-              titlePadding: EdgeInsets.all(0),
-              title: Container(
-                padding:
-                    EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.white,
+            return Theme(
+                data: Theme.of(context)
+                    .copyWith(dialogBackgroundColor: Colors.white),
+                child: new MyAlertDialog(
+                  contentPadding: EdgeInsets.all(0),
+                  titlePadding: EdgeInsets.all(0),
+                  title: Container(
+                    padding:
+                        EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    color: Theme.of(context).primaryColor,
                   ),
-                ),
-                color: Theme.of(context).primaryColor,
-              ),
-              content: Container(
-                padding:
-                    EdgeInsets.only(left: 10, top: 20, right: 10, bottom: 20),
-                child: Text(
-                  message,
-                  style: TextStyle(color: Colors.white),
-                ),
-                color: Theme.of(context).primaryColor,
-              ),
-              actions: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(right: 10),
-                  child: InkResponse(
-                    child: Text(negativeText ?? "取消"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      if (onNegative != null) {
-                        onNegative();
-                      }
-                    },
+                  content: Container(
+                    padding: EdgeInsets.only(
+                        left: 10, top: 20, right: 10, bottom: 20),
+                    child: Text(
+                      message,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Theme.of(context).primaryColor,
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 10),
-                  child: InkResponse(
-                    child: Text(positiveText ?? "确定"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      if (onPositive != null) {
-                        onPositive();
-                      }
-                    },
-                  ),
-                ),
-              ],
-            );
+                  actions: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(right: 10),
+                      child: InkResponse(
+                        child: Text(negativeText ?? "取消"),
+                        onTap: () {
+                          Navigator.pop(context);
+                          if (onNegative != null) {
+                            onNegative();
+                          }
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 10),
+                      child: InkResponse(
+                        child: Text(positiveText ?? "确定"),
+                        onTap: () {
+                          Navigator.pop(context);
+                          if (onPositive != null) {
+                            onPositive();
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ));
           });
     });
   }
