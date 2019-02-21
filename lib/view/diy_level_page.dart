@@ -302,7 +302,7 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
         .toList()
         .asObservable());
     Observable.fromFuture(_copyInputFile2Cache()).flatMap((_) {
-      return Observable.merge(observables).toList().asObservable();
+      return Observable.merge(observables).bufferCount(observables.length);
     }).listen((_) {
       imgCache.clear();
       _loadCacheMapThen();

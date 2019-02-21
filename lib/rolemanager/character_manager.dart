@@ -55,8 +55,7 @@ class CharacterManager {
       return heroManager.loadImages(heros);
     }));
     return Observable.concat(observables)
-        .toList()
-        .asObservable()
+        .bufferCount(observables.length)
         .map((List<List<BaseCharacter>> characterss) {
       for (List<BaseCharacter> characters in characterss) {
         print("Observable.concat    $characters");
