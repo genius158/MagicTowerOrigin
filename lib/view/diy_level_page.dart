@@ -16,6 +16,7 @@ import 'package:magic_tower_origin/rolemanager/character_manager.dart';
 import 'package:magic_tower_origin/rolemanager/hero_manager.dart';
 import 'package:magic_tower_origin/rolemanager/roles_manager.dart';
 import 'package:magic_tower_origin/utils/context_helper.dart';
+import 'package:magic_tower_origin/utils/noshake.dart';
 import 'package:magic_tower_origin/utils/router_heper.dart';
 import 'package:magic_tower_origin/utils/toast.dart';
 import 'package:magic_tower_origin/view/diy_level_header.dart';
@@ -182,6 +183,7 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
       ));
     }
     return new GridView.extent(
+      physics: NoShark(),
       //横轴的最大长度
       maxCrossAxisExtent: 60,
       padding: const EdgeInsets.all(4.0),
@@ -244,7 +246,8 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
   void _onLevelChange(int level) {
     _isLevelChangeAble = false;
     Observable.fromFuture(FilePathManager.getMapEditCacheFilePath())
-        .flatMap((path) => Observable.fromFuture(MapFileControl.saveCache(
+        .flatMap((path) =>
+        Observable.fromFuture(MapFileControl.saveCache(
             context, this._level, _rolesManager.characters,
             filePath: path,
             heroP: _heroManager.hero == null
@@ -258,11 +261,11 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
         print("herop herop herop herop herop herop   ${_heroManager.hero}");
 
         return MapConvert.parseJsonMap(
-                MapFileControl.getRoles(context, level, filePath: path))
+            MapFileControl.getRoles(context, level, filePath: path))
             .flatMap((d) => _rolesManager.loadImages(d))
             .flatMap((_) {
           return MapConvert.parseJsonMap(MapFileControl.getHero(context, level,
-                  filePath: path, withDefaultPosition: false))
+              filePath: path, withDefaultPosition: false))
               .flatMap((d) => _heroManager.loadImages(d));
         });
       });
@@ -283,21 +286,23 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
     Map<String, UI.Image> imgCache = new Map();
     List<Observable<List<BaseCharacter<BaseEntry>>>> observables = new List();
     observables.add(Observable.fromFuture(
-            FilePathManager.getMapEditCacheFilePath())
+        FilePathManager.getMapEditCacheFilePath())
         .asyncMap((path) async {
       await loadStartLevel(path);
       return path;
-    }).flatMap((path) => MapConvert.parseJsonMap(
-                    MapFileControl.getRoles(context, _level, filePath: path))
-                .flatMap((d) => _rolesManager.loadImages(d))
-                .flatMap((_) {
-              return MapConvert.parseJsonMap(MapFileControl.getHero(
-                      context, _level,
-                      filePath: path, withDefaultPosition: false))
-                  .flatMap((d) => _heroManager.loadImages(d));
-            })));
+    }).flatMap((path) =>
+        MapConvert.parseJsonMap(
+            MapFileControl.getRoles(context, _level, filePath: path))
+            .flatMap((d) => _rolesManager.loadImages(d))
+            .flatMap((_) {
+          return MapConvert.parseJsonMap(MapFileControl.getHero(
+              context, _level,
+              filePath: path, withDefaultPosition: false))
+              .flatMap((d) => _heroManager.loadImages(d));
+        })));
     observables.add(Observable.fromIterable(_allRoles)
-        .flatMap((character) => Observable.fromFuture(
+        .flatMap((character) =>
+        Observable.fromFuture(
             BaseManager.getImage(character, imgCache: imgCache)))
         .toList()
         .asObservable());
@@ -364,7 +369,7 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
               ? null
               : _heroManager.hero.imageRender.position);
       MapFileControl.copyMap2Cache(context,
-              filePath: filePath, toFilePath: toFilePath)
+          filePath: filePath, toFilePath: toFilePath)
           .then((date) {
         _isLevelChangeAble = true;
         if (date is FileSystemException) {
