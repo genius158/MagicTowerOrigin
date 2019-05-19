@@ -5,6 +5,7 @@ import 'package:magic_tower_origin/map/map_entities.dart';
 import 'package:magic_tower_origin/map/map_info.dart';
 import 'package:magic_tower_origin/role/ability_character.dart';
 import 'package:magic_tower_origin/role/base_character.dart';
+import 'package:magic_tower_origin/role/npc_character.dart';
 import 'package:magic_tower_origin/role/prop_level.dart';
 import 'package:magic_tower_origin/role/prop_role.dart';
 import 'package:magic_tower_origin/role/weapon_role.dart';
@@ -20,7 +21,7 @@ class MapConvert {
   static const String TYPE = "type";
   static const String P_HERO = "pHero";
 
-  // 能力 部分
+  /// 能力 部分
   static const String LIFE = "life";
   static const String ATTACK = "attack";
   static const String DEFEND = "defend";
@@ -41,6 +42,10 @@ class MapConvert {
   static const String TIMES = "times";
   static const String PROP_TYPE = "propType";
   static const String LEVEL_OFFSET = "levelOffset";
+
+  /// npc 特有
+  static const String MESSAGE = "message";
+  static const String abilityGrant = "abilityGrant";
 
   static Observable<List<BaseCharacter<BaseEntry>>> parseJsonMap(
       Future<dynamic> fJson) {
@@ -64,6 +69,7 @@ class MapConvert {
     return list;
   }
 
+  /// 由json 转化到具体的 角色
   static BaseCharacter _convert(Map<String, dynamic> data) {
     BaseCharacter character = ME.getEntity(data[TYPE]);
     if (character == null) {
@@ -77,6 +83,9 @@ class MapConvert {
     } else if (character.abilityEntry is PropEntry) {
       _loadProp(character, data);
     }
+
+    // npc 相关
+    _putNPCFeatures(character, data);
 
     _loadBase(character, data);
     return character;
@@ -96,7 +105,23 @@ class MapConvert {
     ae.setRKey(data[R_KEY]);
   }
 
- /// 载入攻防武器
+  static void _putNPCFeatures(
+      BaseCharacter<BaseEntry> character, Map<String, dynamic> data) {
+    if (character is NPC) {
+      List<dynamic> messages = data[MESSAGE];
+      if (messages == null) {
+        return;
+      }
+
+      character.clearMessages();
+
+      for (var m in messages) {
+        character.putMessage(m);
+      }
+    }
+  }
+
+  /// 载入攻防武器
   static void _loadADWeapon(
       AbilityCharacter character, Map<String, dynamic> data) {
     Map<String, dynamic> attackJson = data[ATTACK_WEAPON];
@@ -116,10 +141,8 @@ class MapConvert {
   static void _loadProp(
       BaseCharacter<BaseEntry> character, Map<String, dynamic> data) {
     PropEntry ae = character.abilityEntry;
-    print("loadProploadProploadProp11 ${character.jsonData()}");
     ae.times = data[TIMES] ?? ae.times;
     ae.propType = data[PROP_TYPE] ?? ae.propType;
-    print("loadProploadProploadProp22 ${character.jsonData()}");
 
     if (character is PropLevel) {
       character.offset = data[LEVEL_OFFSET] ?? character.offset;
@@ -159,7 +182,7 @@ class MapConvert {
     }
   }
 
- /// 转成json
+  /// 转成json
   static back2Original(List<List<BaseCharacter<BaseEntry>>> bcs) {
     List<Map<String, dynamic>> characters = new List();
     for (var i = 0; i < MapInfo.sx; i++) {

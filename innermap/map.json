@@ -1,7 +1,7 @@
 {
   "sx":13,
   "sy":13,
-  "curLevel":1,
+  "curLevel":0,
   "prop":[],
   "hero":{
     "name": "hero",
@@ -34,14 +34,14 @@
           { }, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, {"type":"nFloor"}, {"type":"wall1"}, { }, {"type":"wall1"}, { },
           { }, {"type":"wall1"}, {"type":"bat2"}, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { }, {"type":"wall1"}, { },
           { }, {"type":"wall1"}, {"type":"rDoor"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"magic1"}, {"type":"wall1"}, { },
-          {"type":"yKey"}, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
+          {"type":"yKey"}, {"type":"wall1"}, {"type":"yKey"}, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
           {"type":"blade4"}, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
           { }, {"type":"wall1"}, { }, { }, { }, { }, {"type":"rKey"}, { }, { }, { }, { }, {"type":"wall1"}, { },
           { }, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
           { }, { }, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { },
-          { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"att"}
+          { }, {"type": "npc1","rKey": 10,"message": ["你好","给你十把黄钥匙"]}, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"att"}
         ],
-        "pHero":{"px":7,"py":4}
+        "pHero":{"px":1,"py":0}
       },
       {
         "roles":[

@@ -58,6 +58,7 @@ class HeroEventLogic {
   bool moveLogic(BuildContext context, TouchDirect direct, int ox, int oy,
       int px, int py, Name character) {
     var hero = _heroManager.hero;
+
     print("moveLogicmoveLogic   $ox  $oy  $px  $py");
     if (_heroManager.hero == null) {
       return false;
@@ -80,6 +81,8 @@ class HeroEventLogic {
           if (character.triggerThanDismiss) {
             _imageRenders.remove(_rolesManager.remove(px, py).imageRender);
           }
+          // 对话框消失后，更新勇者的信息
+          GameProvider.ofHero(context).update(hero);
         });
       }
     } else if (character is PropRole) {
@@ -120,11 +123,9 @@ class HeroEventLogic {
   void _toastEnemy(AbilityCharacter character) {
     if (character.abilityEntry.yKey > 0) {
       Toast.show("开不了门~ 需要一把${ME.getYKey().name}");
-    }
-    if (character.abilityEntry.bKey > 0) {
+    } else if (character.abilityEntry.bKey > 0) {
       Toast.show("开不了门~ 需要一把${ME.getBKey().name}");
-    }
-    if (character.abilityEntry.rKey > 0) {
+    } else if (character.abilityEntry.rKey > 0) {
       Toast.show("开不了门~ 需要一把${ME.getRKey().name}");
     } else {
       Toast.show("没有足够的能力打败怪兽");
@@ -181,6 +182,7 @@ class HeroEventLogic {
         layout: Conversation(npc.name, npc.message, () {
           onTrigger();
           npc.trigger();
+          npc.grant(_heroManager.hero);
         }));
   }
 }

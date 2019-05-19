@@ -1133,7 +1133,7 @@ class ME {
               ImageNode("images/NPC01-01.png", [4, 4], 2),
               ImageNode("images/NPC01-01.png", [4, 4], 3),
             ]),
-            BaseEntry().setPassable(false))
+            AbilityEntry().setPassable(false))
         .putMessage("holle")
         .setName("npc1")
         .setType("npc1");
@@ -1149,7 +1149,7 @@ class ME {
               ImageNode("images/NPC01-01.png", [4, 4], 6),
               ImageNode("images/NPC01-01.png", [4, 4], 7),
             ]),
-            BaseEntry().setPassable(false))
+        AbilityEntry().setPassable(false))
         .putMessage("holle")
         .putMessage("bye")
         .setTriggerThanDismiss()
