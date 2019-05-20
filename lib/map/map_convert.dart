@@ -46,6 +46,7 @@ class MapConvert {
   /// npc 特有
   static const String MESSAGE = "message";
   static const String GRANT_ROLE = "grantRole";
+  static const String TRIGGER_DISMISS = "trigger2Dismiss";
 
   static Observable<List<BaseCharacter>> parseJsonMap(Future<dynamic> fJson) {
     return Observable.fromFuture(fJson).map((json) {
@@ -111,6 +112,10 @@ class MapConvert {
       for (var m in messages) {
         character.message = m;
       }
+    }
+    bool td = pData[TRIGGER_DISMISS];
+    if (td != null) {
+      character.triggerThanDismiss = td;
     }
     Map<String, dynamic> data = pData[GRANT_ROLE];
     if (data != null) {
