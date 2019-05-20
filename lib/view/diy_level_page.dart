@@ -42,7 +42,7 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
   PublishSubject<int> _subject = PublishSubject<int>();
   PublishSubject<List> _levelsChangeSubject = PublishSubject<List>();
 
-  List<BaseCharacter<BaseEntry>> _allRoles = List();
+  List<BaseCharacter> _allRoles = List();
   int _level = 0;
   bool _isLevelChangeAble = false;
   bool _isLevelEdit = false;
@@ -191,7 +191,7 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
     );
   }
 
-  void _onItemSelect(BaseCharacter<BaseEntry> ct) {
+  void _onItemSelect(BaseCharacter ct) {
     if (ct.type == ME.hero) {
       if (_heroManager.hero == null) {
         _heroManager.hero = ME.getHero();

@@ -143,8 +143,7 @@ class MapConvert {
   }
 
   /// 载入道具
-  static void _loadProp(
-      BaseCharacter<BaseEntry> character, Map<String, dynamic> data) {
+  static void _loadProp(BaseCharacter character, Map<String, dynamic> data) {
     PropEntry ae = character.abilityEntry;
     ae.times = data[TIMES] ?? ae.times;
     ae.propType = data[PROP_TYPE] ?? ae.propType;
