@@ -78,7 +78,8 @@ class GamePropInfoView extends StatelessWidget {
   }
 }
 
-class _ImageAndData extends StatelessWidget implements Comparable<_ImageAndData> {
+class _ImageAndData extends StatelessWidget
+    implements Comparable<_ImageAndData> {
   PropRole _propRole;
   ValueChanged<PropRole> onTap;
   EdgeInsets padding;
@@ -98,7 +99,7 @@ class _ImageAndData extends StatelessWidget implements Comparable<_ImageAndData>
     if (imgNodes != null) {
       imgNode = imgNodes[0];
     }
-
+    print("game_view_build " + _propRole.abilityEntry.times.toString());
     return InkWell(
       child: Stack(
         children: <Widget>[

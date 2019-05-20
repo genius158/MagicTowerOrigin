@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:magic_tower_origin/ability/base_entry.dart';
 import 'package:magic_tower_origin/ability/prop_type.dart';
 import 'package:magic_tower_origin/control/control_touch.dart';
 import 'package:magic_tower_origin/datacenter/game_provider.dart';
@@ -41,7 +40,7 @@ class CharacterManager {
     dispose();
 
     print("loadImages -------- ${imageRenders.length}    $mapLevel");
-    List<Observable<List<BaseCharacter<BaseEntry>>>> observables = new List();
+    List<Observable<List<BaseCharacter>>> observables = new List();
     observables.add(Observable.fromFuture(BaseManager.getImage(ME.getRoad1()))
         .map((data) => getWalls(data)));
     observables.add(MapConvert.parseJsonMap(
@@ -97,7 +96,7 @@ class CharacterManager {
     }
   }
 
-  void _resetHeroPosition(BaseCharacter<BaseEntry> hero) {
+  void _resetHeroPosition(BaseCharacter hero) {
     for (List<BaseCharacter> lb in rolesManager.characters) {
       for (BaseCharacter b in lb) {
         if (b is PropLevel) {
@@ -160,8 +159,8 @@ class CharacterManager {
   }
 
   /// 最先加载完成路面
-  static List<BaseCharacter<BaseEntry>> getWalls(BaseCharacter resWall) {
-    List<BaseCharacter<BaseEntry>> finalWalls = List();
+  static List<BaseCharacter> getWalls(BaseCharacter resWall) {
+    List<BaseCharacter> finalWalls = List();
     for (int i = 0; i < MapInfo.sx; i++) {
       for (int j = 0; j < MapInfo.sy; j++) {
         BaseCharacter wall = ME.getRoad1();

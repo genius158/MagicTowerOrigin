@@ -17,4 +17,12 @@ class PropRole extends BaseCharacter<PropEntry> {
     print("PropRole jsonData   $jsonData");
     return jsonData;
   }
+
+  @override
+  BaseCharacter clone() {
+    PropRole character = new PropRole(imageRender, abilityEntry.clone());
+    character.type = type;
+    character.name = name;
+    return character;
+  }
 }

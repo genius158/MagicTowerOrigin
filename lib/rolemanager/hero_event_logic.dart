@@ -83,25 +83,26 @@ class HeroEventLogic {
           }
           // 对话框消失后，更新勇者的信息
           GameProvider.ofHero(context).update(hero);
+          GameProvider.ofGame(context).update(character);
         });
       }
     } else if (character is PropRole) {
       _imageRenders.remove(_rolesManager.remove(px, py).imageRender);
       hero.addEquipment(character);
-      _toastProp(character);
+      toastProp(character);
     } else if (character is WeaponRole) {
       _imageRenders.remove(_rolesManager.remove(px, py).imageRender);
       if (character is GrowWeaponRole) {
         hero.abilityEntry.merge(character.abilityEntry);
-        _toastGrow(character);
+        toastGrow(character);
       } else {
         hero.addEquipment(character);
-        _toastWeapon(character);
+        toastWeapon(character);
       }
     } else if (character is AbilityCharacter) {
       isPassAble = _heroManager.compare(character);
       if (!isPassAble) {
-        _toastEnemy(character);
+        toastEnemy(character);
       }
       if (isPassAble) {
         _imageRenders.remove(_rolesManager.remove(px, py).imageRender);
@@ -120,7 +121,7 @@ class HeroEventLogic {
     return isPassAble;
   }
 
-  void _toastEnemy(AbilityCharacter character) {
+  static void toastEnemy(AbilityCharacter character) {
     if (character.abilityEntry.yKey > 0) {
       Toast.show("开不了门~ 需要一把${ME.getYKey().name}");
     } else if (character.abilityEntry.bKey > 0) {
@@ -132,7 +133,7 @@ class HeroEventLogic {
     }
   }
 
-  void _toastGrow(GrowWeaponRole character) {
+  static void toastGrow(GrowWeaponRole character) {
     if (character.abilityEntry.yKey > 0) {
       Toast.show("获得${character.abilityEntry.yKey}把${character.name}");
     } else if (character.abilityEntry.bKey > 0) {
@@ -150,11 +151,11 @@ class HeroEventLogic {
     }
   }
 
-  void _toastProp(PropRole character) {
+  static void toastProp(PropRole character) {
     Toast.show("获得道具 ${character.name}");
   }
 
-  void _toastWeapon(WeaponRole character) {
+  static void toastWeapon(WeaponRole character) {
     Toast.show("获得武器 ${character.name}");
   }
 

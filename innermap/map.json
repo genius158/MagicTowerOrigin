@@ -39,7 +39,7 @@
           { }, {"type":"wall1"}, { }, { }, { }, { }, {"type":"rKey"}, { }, { }, { }, { }, {"type":"wall1"}, { },
           { }, {"type":"wall1"}, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"wall1"}, { },
           { }, { }, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, {"type":"wall1"}, { },
-          { }, {"type": "npc1","rKey": 10,"message": ["你好","给你十把黄钥匙"]}, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"att"}
+          { }, {"type": "npc1","rKey": 10,"message": ["你好","给你十把黄钥匙"],"grantRole": {"type": "propFlyUp"}}, { }, { }, { }, { }, { }, { }, { }, { }, { }, { }, {"type":"att"}
         ],
         "pHero":{"px":1,"py":0}
       },

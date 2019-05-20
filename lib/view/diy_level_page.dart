@@ -284,7 +284,7 @@ class DiyLevelState extends State<DiyLevelPage> implements DiyLevelLogic {
   /// 初始化，载入diy地图
   void _loadCacheMap({String inputFilePath}) {
     Map<String, UI.Image> imgCache = new Map();
-    List<Observable<List<BaseCharacter<BaseEntry>>>> observables = new List();
+    List<Observable<List<BaseCharacter>>> observables = new List();
     observables.add(Observable.fromFuture(
         FilePathManager.getMapEditCacheFilePath())
         .asyncMap((path) async {

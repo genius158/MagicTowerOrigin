@@ -8,12 +8,13 @@ import 'package:magic_tower_origin/render/image_node.dart';
 import 'package:magic_tower_origin/role/ability_character.dart';
 import 'package:magic_tower_origin/role/base_character.dart';
 import 'package:magic_tower_origin/role/name_role.dart';
+import 'package:magic_tower_origin/role/npc_character.dart';
 import 'package:rxdart/rxdart.dart';
 
 abstract class BaseManager<T extends BaseCharacter, R extends Name> {
   List<List<T>> characters;
 
-  loadImages(List<BaseCharacter<BaseEntry>> cs) {
+  loadImages(List<BaseCharacter> cs) {
     HashMap<String, UI.Image> imgCache = HashMap();
     return Observable.fromIterable(positionReset(cs))
         .flatMap((character) =>
@@ -28,7 +29,6 @@ abstract class BaseManager<T extends BaseCharacter, R extends Name> {
         return character;
       }).toList();
       imgCache.clear();
-//      print("saveCachesaveCache 111111111111111111     $cs");
       return finalCbs;
     });
   }
@@ -60,6 +60,12 @@ abstract class BaseManager<T extends BaseCharacter, R extends Name> {
     if (character is AbilityCharacter && character.equipment != null) {
       for (var weapon in character.equipment) {
         await getImage(weapon);
+      }
+    }
+
+    if (character is NPC) {
+      if (character.abilityGrantRole != null) {
+        await getImage(character.abilityGrantRole,imgCache: imgCache);
       }
     }
 
@@ -120,9 +126,8 @@ abstract class BaseManager<T extends BaseCharacter, R extends Name> {
   }
 
   /// 位置重设
-  List<BaseCharacter<BaseEntry>> positionReset(
-      List<BaseCharacter<BaseEntry>> cs) {
-    List<BaseCharacter<BaseEntry>> fcs = new List();
+  List<BaseCharacter> positionReset(List<BaseCharacter> cs) {
+    List<BaseCharacter> fcs = new List();
     int index = 0;
     for (var character in cs) {
       if (character != null) {

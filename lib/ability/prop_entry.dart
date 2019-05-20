@@ -19,4 +19,14 @@ class PropEntry extends BaseEntry<PropEntry> {
       times += other.times;
     }
   }
+
+  PropEntry clone() {
+    PropEntry propEntry = new PropEntry();
+    propEntry.times = times;
+    propEntry.propType = propType;
+    propEntry.passable = passable;
+    propEntry.name = name;
+    propEntry.type = type;
+    return propEntry;
+  }
 }

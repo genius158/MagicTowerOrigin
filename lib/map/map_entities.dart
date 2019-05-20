@@ -1132,9 +1132,8 @@ class ME {
               ImageNode("images/NPC01-01.png", [4, 4], 1),
               ImageNode("images/NPC01-01.png", [4, 4], 2),
               ImageNode("images/NPC01-01.png", [4, 4], 3),
-            ]),
-            AbilityEntry().setPassable(false))
-        .putMessage("holle")
+            ]),["holle"],
+           getRKey())
         .setName("npc1")
         .setType("npc1");
   }
@@ -1148,10 +1147,22 @@ class ME {
               ImageNode("images/NPC01-01.png", [4, 4], 5),
               ImageNode("images/NPC01-01.png", [4, 4], 6),
               ImageNode("images/NPC01-01.png", [4, 4], 7),
-            ]),
-        AbilityEntry().setPassable(false))
-        .putMessage("holle")
-        .putMessage("bye")
+            ]),["holle","bye"],
+            null)
+        .setTriggerThanDismiss()
+        .setName("npc2")
+        .setType("npc2");
+  }
+
+  static getNPC3() {
+    return NPC(
+            ImageRender([
+              ImageNode("images/NPC01-01.png", [4, 4], 4),
+              ImageNode("images/NPC01-01.png", [4, 4], 5),
+              ImageNode("images/NPC01-01.png", [4, 4], 6),
+              ImageNode("images/NPC01-01.png", [4, 4], 7),
+            ]),["holle"],
+            getPropFlyUp())
         .setTriggerThanDismiss()
         .setName("npc2")
         .setType("npc2");

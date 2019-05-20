@@ -1,5 +1,6 @@
 import 'package:magic_tower_origin/ability/ability_entry.dart';
 import 'package:magic_tower_origin/ability/prop_entry.dart';
+import 'package:magic_tower_origin/map/map_convert.dart';
 import 'package:magic_tower_origin/render/image_render.dart';
 import 'package:magic_tower_origin/role/base_character.dart';
 import 'package:magic_tower_origin/role/prop_role.dart';
@@ -60,12 +61,16 @@ class AbilityCharacter extends BaseCharacter<AbilityEntry> {
     for (var we in equipment) {
       if (we.type == ni.type) {
         if (we.abilityEntry is PropEntry) {
-          (we.abilityEntry as PropEntry).merge(ni.abilityEntry);
+          we.abilityEntry.merge(ni.abilityEntry);
           return;
         }
         equipment.remove(we);
         break;
       }
+    }
+
+    if (ni is PropRole) {
+      ni = ni.clone();
     }
     equipment.add(ni);
   }

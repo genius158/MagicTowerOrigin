@@ -1,5 +1,4 @@
 import 'package:magic_tower_origin/ability/ability_entry.dart';
-import 'package:magic_tower_origin/ability/base_entry.dart';
 import 'package:magic_tower_origin/control/control_touch.dart';
 import 'package:magic_tower_origin/role/ability_character.dart';
 import 'package:magic_tower_origin/role/base_character.dart';
@@ -11,7 +10,7 @@ class HeroManager extends BaseManager<HeroCharacter, AbilityEntry> {
   HeroCharacter hero;
 
   /// 位置重设
-  positionReset(List<BaseCharacter<BaseEntry>> cs) {
+  positionReset(List<BaseCharacter> cs) {
     return cs;
   }
 
@@ -85,7 +84,7 @@ class HeroManager extends BaseManager<HeroCharacter, AbilityEntry> {
     for (var pr in hero.getProps()) {
       if (pr.abilityEntry.propType == type) {
         var times = --pr.abilityEntry.times;
-        print("cutPropcutPropcutPropcutProp    $times");
+        print("cutPropcutPropcutPropcutProp    $times"+"   "+pr.jsonData().toString());
         if (times <= 0) {
           hero.equipment.remove(pr);
           break;

@@ -1,31 +1,40 @@
-import 'package:magic_tower_origin/ability/ability_entry.dart';
-import 'package:magic_tower_origin/ability/base_entry.dart';
 import 'package:magic_tower_origin/map/map_convert.dart';
 import 'package:magic_tower_origin/render/image_render.dart';
-import 'package:magic_tower_origin/role/ability_character.dart';
+import 'package:magic_tower_origin/role/base_character.dart';
 import 'package:magic_tower_origin/role/condition_trigger.dart';
+import 'package:magic_tower_origin/role/grow_weapon_role.dart';
 import 'package:magic_tower_origin/role/hero_character.dart';
+import 'package:magic_tower_origin/role/prop_condition_role.dart';
+import 'package:magic_tower_origin/role/prop_role.dart';
+import 'package:magic_tower_origin/role/weapon_role.dart';
+import 'package:magic_tower_origin/rolemanager/hero_event_logic.dart';
 
-class NPC extends AbilityCharacter implements ConditionTrigger {
-  List<String> _message = [];
+class NPC extends BaseCharacter<List<String>> implements ConditionTrigger {
+  get message => abilityEntry;
+
+  set messages(List<String> messages) {
+    abilityEntry.clear();
+    if (messages != null) {
+      abilityEntry.addAll(messages);
+    }
+  }
+
+  set message(String message) => abilityEntry.add(message);
+
   bool _triggerThanDismiss = false;
 
   /// 我们可以从当前npc处获取到什么
-  get abilityGrant => abilityEntry;
+  BaseCharacter _abilityGrantRole;
 
-  NPC(ImageRender imageRender, AbilityEntry abilityEntry)
-      : super(imageRender, abilityEntry) {
-    abilityEntry.passable = false;
-  }
+  set abilityGrantRole(BaseCharacter character) =>
+      _abilityGrantRole = character;
 
-  putMessage(String message) {
-    _message.add(message);
-    return this;
-  }
+  get abilityGrantRole => _abilityGrantRole;
 
-  putMessages(List<String> messages) {
-    _message.addAll(messages);
-    return this;
+  NPC(ImageRender imageRender, List<String> messages,
+      BaseCharacter abilityGrantRole)
+      : super(imageRender, messages) {
+    this._abilityGrantRole = abilityGrantRole;
   }
 
   setTriggerThanDismiss() {
@@ -35,15 +44,22 @@ class NPC extends AbilityCharacter implements ConditionTrigger {
 
   /// 赋予英雄能力
   grant(HeroCharacter hero) {
-    BaseEntry _be = abilityGrant;
-    if (_be == null || hero == null) {
+    BaseCharacter character = _abilityGrantRole;
+    if (character == null || hero == null) {
       return;
     }
 
-    if (_be is AbilityEntry) {
-      hero.abilityEntry.merge(_be);
-
-//    }else if(_abilityGrant is ){
+    if (character is PropRole) {
+      hero.addEquipment(character);
+      HeroEventLogic.toastProp(character);
+    } else if (character is WeaponRole) {
+      if (character is GrowWeaponRole) {
+        hero.abilityEntry.merge(character.abilityEntry);
+        HeroEventLogic.toastGrow(character);
+      } else {
+        hero.addEquipment(character);
+        HeroEventLogic.toastWeapon(character);
+      }
     }
   }
 
@@ -53,6 +69,10 @@ class NPC extends AbilityCharacter implements ConditionTrigger {
     jsonData.addAll({
       MapConvert.MESSAGE: message,
     });
+
+    if (_abilityGrantRole != null) {
+      jsonData.addAll({MapConvert.GRANT_ROLE: _abilityGrantRole.jsonData()});
+    }
     return jsonData;
   }
 
@@ -60,10 +80,4 @@ class NPC extends AbilityCharacter implements ConditionTrigger {
   void trigger() {}
 
   get triggerThanDismiss => _triggerThanDismiss;
-
-  get message => _message;
-
-  void clearMessages() {
-    _message.clear();
-  }
 }

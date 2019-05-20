@@ -45,21 +45,20 @@ class MapConvert {
 
   /// npc 特有
   static const String MESSAGE = "message";
-  static const String abilityGrant = "abilityGrant";
+  static const String GRANT_ROLE = "grantRole";
 
-  static Observable<List<BaseCharacter<BaseEntry>>> parseJsonMap(
-      Future<dynamic> fJson) {
+  static Observable<List<BaseCharacter>> parseJsonMap(Future<dynamic> fJson) {
     return Observable.fromFuture(fJson).map((json) {
       return _convertAndAdjust(json);
     });
   }
 
-  static List<BaseCharacter<BaseEntry>> _convertAndAdjust(List<dynamic> map) {
-    List<BaseCharacter<BaseEntry>> list = new List();
+  static List<BaseCharacter> _convertAndAdjust(List<dynamic> map) {
+    List<BaseCharacter> list = new List();
     if (map != null) {
       for (var data in map) {
         if (data is Map) {
-          BaseCharacter bc = MapConvert._convert(data);
+          BaseCharacter bc = MapConvert.convert(data);
           list.add(bc);
         } else {
           list.add(null);
@@ -70,7 +69,7 @@ class MapConvert {
   }
 
   /// 由json 转化到具体的 角色
-  static BaseCharacter _convert(Map<String, dynamic> data) {
+  static BaseCharacter convert(Map<String, dynamic> data) {
     BaseCharacter character = ME.getEntity(data[TYPE]);
     if (character == null) {
       return null;
@@ -82,10 +81,10 @@ class MapConvert {
       _loadADWeapon(character, data);
     } else if (character.abilityEntry is PropEntry) {
       _loadProp(character, data);
+    } else if (character is NPC) {
+      // npc 相关
+      _loadNPC(character, data);
     }
-
-    // npc 相关
-    _putNPCFeatures(character, data);
 
     _loadBase(character, data);
     return character;
@@ -105,25 +104,26 @@ class MapConvert {
     ae.setRKey(data[R_KEY]);
   }
 
-  static void _putNPCFeatures(
-      BaseCharacter<BaseEntry> character, Map<String, dynamic> data) {
-    if (character is NPC) {
-      List<dynamic> messages = data[MESSAGE];
-      if (messages == null) {
-        return;
-      }
-
-      character.clearMessages();
-
+  static void _loadNPC(NPC character, Map<String, dynamic> pData) {
+    List<dynamic> messages = pData[MESSAGE];
+    if (messages != null) {
+      character.messages = null;
       for (var m in messages) {
-        character.putMessage(m);
+        character.message = m;
       }
+    }
+    Map<String, dynamic> data = pData[GRANT_ROLE];
+    if (data != null) {
+      BaseCharacter grantRole = convert(data);
+      character.abilityGrantRole = grantRole;
     }
   }
 
   /// 载入攻防武器
-  static void _loadADWeapon(
-      AbilityCharacter character, Map<String, dynamic> data) {
+  static void _loadADWeapon(character, Map<String, dynamic> data) {
+    if (!(character is AbilityCharacter)) {
+      return;
+    }
     Map<String, dynamic> attackJson = data[ATTACK_WEAPON];
     if (attackJson != null) {
       WeaponRole awr = ME.getEntity(attackJson[TYPE]);
@@ -149,8 +149,7 @@ class MapConvert {
     }
   }
 
-  static void _loadBase(
-      BaseCharacter<BaseEntry> character, Map<String, dynamic> data) {
+  static void _loadBase(BaseCharacter character, Map<String, dynamic> data) {
     var ir = character.imageRender;
     if (data[PX] != null) {
       ir.position[0] = data[PX];
@@ -160,7 +159,9 @@ class MapConvert {
     }
 
     bool isPass = data[PASSABLE] != null ? data[PASSABLE] == "1" : null;
-    character.abilityEntry.setPassable(isPass);
+    if (character.abilityEntry is BaseEntry) {
+      character.abilityEntry.setPassable(isPass);
+    }
   }
 
   /// 载入装备
@@ -183,7 +184,7 @@ class MapConvert {
   }
 
   /// 转成json
-  static back2Original(List<List<BaseCharacter<BaseEntry>>> bcs) {
+  static back2Original(List<List<BaseCharacter>> bcs) {
     List<Map<String, dynamic>> characters = new List();
     for (var i = 0; i < MapInfo.sx; i++) {
       for (var j = 0; j < MapInfo.sy; j++) {
