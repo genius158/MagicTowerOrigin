@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// 对图片和文字封装位一个通用的widget
 class ImageText extends StatelessWidget {
   EdgeInsetsGeometry padding;
 
@@ -10,7 +11,7 @@ class ImageText extends StatelessWidget {
   Color color;
 
   ImageText(this._img, this._text,
-      {this.padding, this.width, this.height, this.color});
+      {this.padding, this.width = 16, this.height = 16, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +28,8 @@ class ImageText extends StatelessWidget {
         children: <Widget>[
           Image.asset(
             _img,
-            width: width ?? 16,
-            height: height ?? 16,
+            width: width,
+            height: height,
           ),
           tv
         ],

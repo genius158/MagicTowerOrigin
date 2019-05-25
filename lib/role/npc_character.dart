@@ -8,6 +8,7 @@ import 'package:magic_tower_origin/role/prop_role.dart';
 import 'package:magic_tower_origin/role/weapon_role.dart';
 import 'package:magic_tower_origin/rolemanager/hero_event_logic.dart';
 
+/// 角色 npc 各种npc
 class NPC extends BaseCharacter<List<String>> implements ConditionTrigger {
   get message => abilityEntry;
 

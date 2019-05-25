@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:magic_tower_origin/render/image_node.dart';
 import 'package:magic_tower_origin/render/image_render.dart';
 
+/// 游戏主画布，所有游戏操作渲染的窗口
 class GamePainter extends CustomPainter {
   Paint _gamePaint;
 
   List<ImageRender> imageRenders;
+
   GamePainter({this.imageRenders}) {
     _gamePaint = Paint();
 //    gamePaint.style = PaintingStyle.stroke;

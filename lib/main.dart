@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           GameHeroInfoView(),
-          getGameView(context),
+          _getGameView(context),
           Expanded(
               child: Container(
             child: GamePropInfoView(),
@@ -118,19 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print("s  dispose() ----------------------------------------");
   }
 
-  getBg() {
-    return Container(
-        decoration: BoxDecoration(
-            color: ColorMgr.cr666666(),
-            border: Border.all(color: ColorMgr.crB57147(), width: 4)),
-        child: Image.asset(
-          "images/user_info_bg.jpg",
-          repeat: ImageRepeat.repeatY,
-          height: double.infinity,
-        ));
-  }
-
-  getGameView(BuildContext context) {
+  _getGameView(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: ColorMgr.cr666666(),
@@ -182,6 +170,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+///
+/// 屏幕适配重写部分
+/// 重写至 widgets/binding.dart
+///
 class InnerWidgetsFlutterBinding extends WidgetsFlutterBinding {
   static WidgetsBinding ensureInitialized() {
     if (WidgetsBinding.instance == null) InnerWidgetsFlutterBinding();

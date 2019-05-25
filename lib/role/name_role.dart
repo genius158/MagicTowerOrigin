@@ -1,3 +1,5 @@
+
+/// 所有类的基类
 class Name {
   String type;
   String name;

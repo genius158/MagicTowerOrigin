@@ -5,6 +5,7 @@ import 'package:magic_tower_origin/role/ability_character.dart';
 import 'package:magic_tower_origin/role/prop_role.dart';
 import 'package:magic_tower_origin/widget/game_image_text.dart';
 
+/// 主界面道具显示栏
 class GamePropInfoView extends StatelessWidget {
   HeroProviderObservable _heroInfo;
 

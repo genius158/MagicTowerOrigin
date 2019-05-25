@@ -18,6 +18,7 @@ import 'package:magic_tower_origin/view/monster_book_dialog.dart';
 
 import 'package:rxdart/rxdart.dart';
 
+/// 游戏主界面
 class GameView extends StatefulWidget {
   GameView({Key key}) : super(key: key);
 

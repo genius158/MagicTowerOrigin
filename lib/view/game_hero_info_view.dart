@@ -10,6 +10,7 @@ import 'package:magic_tower_origin/role/weapon_role.dart';
 import 'package:magic_tower_origin/widget/game_image_text.dart';
 import 'package:magic_tower_origin/widget/image_text.dart';
 
+/// 英雄状态显示界面
 class GameHeroInfoView extends StatelessWidget {
   HeroProviderObservable _heroInfo;
 

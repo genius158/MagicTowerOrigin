@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:magic_tower_origin/utils/context_helper.dart';
 import 'package:magic_tower_origin/widget/my_dialog.dart';
 
+/// 路由工具工具
 class RouterHelper {
   static routeDialog(BuildContext context,
       {Widget layout,
@@ -149,6 +150,7 @@ class RouterHelper {
     );
   }
 
+  /// 界面切换动画
   static Widget _buildMaterialDialogTransitions(
       BuildContext context,
       Animation<double> animation,

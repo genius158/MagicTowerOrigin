@@ -1,7 +1,8 @@
 import 'dart:io';
+import 'dart:ui' as UI show Image;
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:magic_tower_origin/ability/base_entry.dart';
 import 'package:magic_tower_origin/config/colors.dart';
 import 'package:magic_tower_origin/locale/translations_delegate.dart';
 import 'package:magic_tower_origin/map/file_path_manager.dart';
@@ -23,10 +24,9 @@ import 'package:magic_tower_origin/view/diy_level_header.dart';
 import 'package:magic_tower_origin/view/game_diy_render_view.dart';
 import 'package:magic_tower_origin/widget/game_image_text.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:file_picker/file_picker.dart';
-import 'dart:ui' as UI show Image;
 import 'package:share_extend/share_extend.dart';
 
+/// 自定义关卡界面
 class DiyLevelPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => DiyLevelState();

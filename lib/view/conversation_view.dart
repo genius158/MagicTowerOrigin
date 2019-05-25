@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magic_tower_origin/config/colors.dart';
 
+/// 对话框
 class Conversation extends StatefulWidget {
   List<String> _message = List();
   VoidCallback _onTrigger;

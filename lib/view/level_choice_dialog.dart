@@ -3,6 +3,7 @@ import 'package:magic_tower_origin/map/map_convert.dart';
 import 'package:magic_tower_origin/map/map_file_contol.dart';
 import 'package:magic_tower_origin/utils/context_helper.dart';
 
+/// 关卡选择弹窗
 class LevelChoiceDialog extends StatefulWidget {
   String _mapPath;
   ValueChanged<int> _onValueBack;

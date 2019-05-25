@@ -6,6 +6,7 @@ import 'package:magic_tower_origin/render/image_render.dart';
 import 'package:magic_tower_origin/view/game_painter.dart';
 import 'package:rxdart/rxdart.dart';
 
+/// 渲染频率设置
 class GameControlRenderView extends StatefulWidget {
   List<ImageRender> _imageRenders;
   ValueChanged<TouchDirect> _onDirectChange;
@@ -55,7 +56,6 @@ class GameControlRenderState extends State<GameControlRenderView> {
     super.deactivate();
     renderStream.pause();
   }
-
 
   @override
   void dispose() {

@@ -10,6 +10,7 @@ import 'package:magic_tower_origin/utils/damage_calculate.dart';
 import 'package:magic_tower_origin/widget/game_image_text.dart';
 import 'package:magic_tower_origin/widget/image_text.dart';
 
+/// 怪物手册
 class MonsterBookDialog extends StatelessWidget {
   HeroCharacter _hero;
   List<List<BaseCharacter>> _datas;
@@ -169,6 +170,7 @@ class _ListItem extends StatelessWidget implements Comparable<_ListItem> {
   @override
   int get hashCode => abilityCharacter.type.hashCode;
 
+  /// 根据能力值排序
   @override
   int compareTo(other) {
     return abilityCharacter.abilityEntry.attack +

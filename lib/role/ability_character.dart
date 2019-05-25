@@ -1,6 +1,5 @@
 import 'package:magic_tower_origin/ability/ability_entry.dart';
 import 'package:magic_tower_origin/ability/prop_entry.dart';
-import 'package:magic_tower_origin/map/map_convert.dart';
 import 'package:magic_tower_origin/render/image_render.dart';
 import 'package:magic_tower_origin/role/base_character.dart';
 import 'package:magic_tower_origin/role/prop_role.dart';

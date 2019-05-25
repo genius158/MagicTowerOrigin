@@ -1,6 +1,7 @@
 import 'package:magic_tower_origin/ability/base_entry.dart';
 import 'package:magic_tower_origin/utils/damage_calculate.dart';
 
+///  基础能力值
 class AbilityEntry extends BaseEntry<AbilityEntry> {
   int life = 0;
   int attack = 0;

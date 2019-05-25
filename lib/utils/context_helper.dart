@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
+/// 确定context可用
 class ContextHelper {
   static withCxt(BuildContext context, ValueChanged<BuildContext> vc) {
     try {

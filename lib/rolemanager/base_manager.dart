@@ -1,8 +1,8 @@
 import 'dart:collection';
 import 'dart:ui';
 import 'dart:ui' as UI show Image;
+
 import 'package:flutter/services.dart';
-import 'package:magic_tower_origin/ability/base_entry.dart';
 import 'package:magic_tower_origin/map/map_info.dart';
 import 'package:magic_tower_origin/render/image_node.dart';
 import 'package:magic_tower_origin/role/ability_character.dart';
@@ -11,6 +11,7 @@ import 'package:magic_tower_origin/role/name_role.dart';
 import 'package:magic_tower_origin/role/npc_character.dart';
 import 'package:rxdart/rxdart.dart';
 
+ /// 角色管理基类
 abstract class BaseManager<T extends BaseCharacter, R extends Name> {
   List<List<T>> characters;
 

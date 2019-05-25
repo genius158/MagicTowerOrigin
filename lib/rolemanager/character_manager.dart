@@ -17,23 +17,33 @@ import 'package:rxdart/rxdart.dart';
 
 /// 角色管理类
 class CharacterManager {
+  /// 英雄
   HeroManager heroManager = new HeroManager();
+
+  /// 其他角色，包括敌人、道具、墙壁等
   RolesManager rolesManager = new RolesManager();
 
+  /// 角色对应的图片资源
   List<ImageRender> imageRenders = new List();
 
-  HeroEventLogic heroEventLogic;
+  /// 英雄移动逻辑控制类
+  HeroEventLogic _heroEventLogic;
 
   CharacterManager() {
-    heroEventLogic =
+    _heroEventLogic =
         new HeroEventLogic(heroManager, rolesManager, imageRenders);
   }
 
+  /// 当前关卡数
   int mapLevel;
+
+  /// 上一个关卡数
   int _lastLevel;
 
+  /// 角色对应的图片资源是否已经加载好
   bool _resReady = false;
 
+  /// 加载图片资源
   Observable loadImages(BuildContext context, mapLevel) {
     this._resReady = false;
     this.mapLevel = mapLevel;
@@ -72,7 +82,7 @@ class CharacterManager {
   bool directDell(BuildContext context, TouchDirect direct) {
     // 渲染完成后才可以 继续 游戏
     if (_resReady && direct != null && direct != TouchDirect.none) {
-      bool needRender = heroEventLogic.directDell(context, direct);
+      bool needRender = _heroEventLogic.directDell(context, direct);
       return needRender;
     }
     return false;
@@ -84,6 +94,7 @@ class CharacterManager {
     rolesManager.dispose();
   }
 
+  /// 缓存游戏数据
   Future saveCache(BuildContext context,
       {bool levelCache, String filePath}) async {
     if (levelCache != null && levelCache) {
@@ -96,6 +107,7 @@ class CharacterManager {
     }
   }
 
+  /// 重新设置英雄位置
   void _resetHeroPosition(BaseCharacter hero) {
     for (List<BaseCharacter> lb in rolesManager.characters) {
       for (BaseCharacter b in lb) {
@@ -131,6 +143,7 @@ class CharacterManager {
     return false;
   }
 
+  /// 确认英雄初始位置的有效性
   bool _determineHp(List<int> hp, int px, int py) {
     if (px < 0) {
       return false;
@@ -173,6 +186,7 @@ class CharacterManager {
     return finalWalls;
   }
 
+  /// 处理道具响应
   void dellPropType(int propType, context) {
     switch (propType) {
       case PropType.ABILITY_SYMMETRY:

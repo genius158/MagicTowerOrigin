@@ -1,5 +1,6 @@
 import 'package:magic_tower_origin/ability/base_entry.dart';
 
+ /// 属性基类
 class PropEntry extends BaseEntry<PropEntry> {
   int times = -1;
   int propType;

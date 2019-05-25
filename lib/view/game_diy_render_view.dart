@@ -6,6 +6,7 @@ import 'package:magic_tower_origin/render/image_render.dart';
 import 'package:magic_tower_origin/view/game_painter.dart';
 import 'package:rxdart/rxdart.dart';
 
+/// 关卡自定义界面
 class GameDiyRenderView extends StatefulWidget {
   List<ImageRender> _imageRenders;
 

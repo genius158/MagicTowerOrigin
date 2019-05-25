@@ -6,13 +6,13 @@ class ImageView extends StatelessWidget {
   double width;
   double height;
 
-  ImageView(this.imageNode, {this.width, this.height});
+  ImageView(this.imageNode, {this.width = 20, this.height = 20});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width ?? 20,
-      height: height ?? 20,
+      width: width,
+      height: height,
       child: new CustomPaint(
         painter: Painter(imageNode),
       ),
